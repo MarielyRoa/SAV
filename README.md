@@ -50,4 +50,3 @@ Consolidación de ventas unidas con información de clientes, productos y fechas
 
 ## 👩‍💻 Autor
 **Mariely Roa**  
-GitHub: https://github.com/MarielyRoa
