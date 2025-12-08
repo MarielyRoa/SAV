@@ -1,0 +1,5 @@
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net9.0\SAV.workerLoad.csproj.AssemblyReference.cache
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net9.0\SAV.workerLoad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net9.0\SAV.workerLoad.AssemblyInfoInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net9.0\SAV.workerLoad.AssemblyInfo.cs
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net9.0\SAV.workerLoad.csproj.CoreCompileInputs.cache

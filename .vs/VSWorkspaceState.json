@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SAV.domain",
+    "\\SAV.domain\\Entities",
+    "\\SAV.domain\\Entities\\DB_Externa",
+    "\\SAV.persistencia",
+    "\\SAV.persistencia\\Repositorios",
+    "\\SAV.persistencia\\Repositorios\\Api",
+    "\\SAV.persistencia\\Repositorios\\Data_Warehouse",
+    "\\SAV.workerLoad"
+  ],
+  "SelectedNode": "\\SAV.sln",
+  "PreviewInSolutionExplorer": false
+}

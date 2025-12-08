@@ -1,0 +1,5 @@
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net9.0\SAV.persistencia.csproj.AssemblyReference.cache
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net9.0\SAV.persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net9.0\SAV.persistencia.AssemblyInfoInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net9.0\SAV.persistencia.AssemblyInfo.cs
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net9.0\SAV.persistencia.csproj.CoreCompileInputs.cache

@@ -1,0 +1,17 @@
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.persistencia.deps.json
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.persistencia.dll
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.persistencia.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.application.dll
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.domain.dll
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.domain.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\bin\Debug\net8.0\SAV.application.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.csproj.AssemblyReference.cache
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.AssemblyInfoInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.AssemblyInfo.cs
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.csproj.CoreCompileInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.pers.553D10F9.Up2Date
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.dll
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\refint\SAV.persistencia.dll
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\SAV.persistencia.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.persistencia\obj\Debug\net8.0\ref\SAV.persistencia.dll

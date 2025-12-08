@@ -1,0 +1,15 @@
+C:\Users\Mariely\Desktop\SAV\SAV.application\bin\Debug\net8.0\SAV.application.deps.json
+C:\Users\Mariely\Desktop\SAV\SAV.application\bin\Debug\net8.0\SAV.application.dll
+C:\Users\Mariely\Desktop\SAV\SAV.application\bin\Debug\net8.0\SAV.application.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.application\bin\Debug\net8.0\SAV.domain.dll
+C:\Users\Mariely\Desktop\SAV\SAV.application\bin\Debug\net8.0\SAV.domain.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.csproj.AssemblyReference.cache
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.AssemblyInfoInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.AssemblyInfo.cs
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.csproj.CoreCompileInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.appl.0E8F44A9.Up2Date
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.dll
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\refint\SAV.application.dll
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.pdb
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\ref\SAV.application.dll
