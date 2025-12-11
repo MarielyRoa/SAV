@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SAV.domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3a93123db115c6599274c7857b286494667c226")]
 [assembly: System.Reflection.AssemblyProductAttribute("SAV.domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SAV.domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

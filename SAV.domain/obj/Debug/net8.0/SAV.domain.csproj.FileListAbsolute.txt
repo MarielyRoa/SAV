@@ -5,6 +5,7 @@ C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.GeneratedMSB
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.AssemblyInfoInputs.cache
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.AssemblyInfo.cs
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.csproj.CoreCompileInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.sourcelink.json
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.dll
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\refint\SAV.domain.dll
 C:\Users\Mariely\Desktop\SAV\SAV.domain\obj\Debug\net8.0\SAV.domain.pdb

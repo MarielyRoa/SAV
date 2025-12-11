@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Mariely\\Desktop\\SAV\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D9FE3242-C242-4FF0-8B01-6F8284029A41}|SAV.persistencia\\SAV.persistencia.csproj|c:\\users\\mariely\\desktop\\sav\\sav.persistencia\\repositorios\\data_warehouse\\dwrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9FE3242-C242-4FF0-8B01-6F8284029A41}|SAV.persistencia\\SAV.persistencia.csproj|solutionrelative:sav.persistencia\\repositorios\\data_warehouse\\dwrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32550572-62BE-499D-A735-1A86C1DD1D22}|SAV.workerLoad\\SAV.workerLoad.csproj|c:\\users\\mariely\\desktop\\sav\\sav.workerload\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{32550572-62BE-499D-A735-1A86C1DD1D22}|SAV.workerLoad\\SAV.workerLoad.csproj|solutionrelative:sav.workerload\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,31 +46,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Worker.cs",
-              "DocumentMoniker": "C:\\Users\\Mariely\\Desktop\\SAV\\SAV.workerLoad\\Worker.cs",
-              "RelativeDocumentMoniker": "SAV.workerLoad\\Worker.cs",
-              "ToolTip": "C:\\Users\\Mariely\\Desktop\\SAV\\SAV.workerLoad\\Worker.cs",
-              "RelativeToolTip": "SAV.workerLoad\\Worker.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwDwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T18:41:31.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DwRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mariely\\Desktop\\SAV\\SAV.persistencia\\Repositorios\\Data_Warehouse\\DwRepository.cs",
-              "RelativeDocumentMoniker": "SAV.persistencia\\Repositorios\\Data_Warehouse\\DwRepository.cs",
-              "ToolTip": "C:\\Users\\Mariely\\Desktop\\SAV\\SAV.persistencia\\Repositorios\\Data_Warehouse\\DwRepository.cs",
-              "RelativeToolTip": "SAV.persistencia\\Repositorios\\Data_Warehouse\\DwRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T20:38:22.11Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",

@@ -66,6 +66,7 @@ C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\SAV.API.AssemblyInfo.cs
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\SAV.API.csproj.CoreCompileInputs.cache
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\SAV.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\SAV.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\SAV.API.sourcelink.json
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\Mariely\Desktop\SAV\SAV.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

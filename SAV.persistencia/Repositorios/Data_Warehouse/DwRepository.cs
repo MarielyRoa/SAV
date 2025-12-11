@@ -16,6 +16,8 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
         private readonly DtwarehouseContext _ctx;
         private readonly IcustomersCsvRepo _csvCustomers;
         private readonly IproductsCsvRepo _csvProducts;
+        private readonly IordersCsvRepo _csvOrders; // ✅ AGREGADO
+        private readonly Iorder_detailsCsvRepo _csvOrderDetails; // ✅ AGREGADO
         private readonly IClientesUpdateApiRepo _apiClientes;
         private readonly IProductosUpdateApiRepo _apiProductos;
         private readonly IVentasHistoricasDBRepo _externalDb;
@@ -25,6 +27,8 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
             DtwarehouseContext ctx,
             IcustomersCsvRepo csvCustomers,
             IproductsCsvRepo csvProducts,
+            IordersCsvRepo csvOrders, // ✅ AGREGADO
+            Iorder_detailsCsvRepo csvOrderDetails, // ✅ AGREGADO
             ILogger<DwRepository> logger,
             IVentasHistoricasDBRepo externalDb,
             IClientesUpdateApiRepo apiClientes,
@@ -33,6 +37,8 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
             _ctx = ctx;
             _csvCustomers = csvCustomers;
             _csvProducts = csvProducts;
+            _csvOrders = csvOrders; // ✅ AGREGADO
+            _csvOrderDetails = csvOrderDetails; // ✅ AGREGADO
             _apiClientes = apiClientes;
             _apiProductos = apiProductos;
             _externalDb = externalDb;
@@ -63,7 +69,6 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
 
                 DateTime fechaCarga = DateTime.Now;
 
-               
                 var fuentes = new List<DimFuente>
                 {
                     new DimFuente { IdFuente = 1, TipoFuente = "CSV", Descripcion = "Archivo CSV de Clientes", FechaCarga = fechaCarga },
@@ -76,20 +81,17 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                 await _ctx.DimFuentes.AddRangeAsync(fuentes);
                 await _ctx.SaveChangesAsync();
 
-                // Obtener las surrogate keys (FuenteKey) generadas por la BD
                 var fuenteCsvClientesKey = fuentes.Single(f => f.IdFuente == 1).FuenteKey;
                 var fuenteCsvProductosKey = fuentes.Single(f => f.IdFuente == 2).FuenteKey;
                 var fuenteApiClientesKey = fuentes.Single(f => f.IdFuente == 3).FuenteKey;
                 var fuenteApiProductosKey = fuentes.Single(f => f.IdFuente == 4).FuenteKey;
                 var fuenteExternosKey = fuentes.Single(f => f.IdFuente == 5).FuenteKey;
 
-                
-               
                 var dimClientes = new List<DimCliente>();
 
                 dimClientes.AddRange(csvClientes.Select(c => new DimCliente
                 {
-                    CustomerID = c.CustomerID,  
+                    CustomerID = c.CustomerID,
                     FirstName = c.FirstName ?? string.Empty,
                     LastName = c.LastName ?? string.Empty,
                     Email = c.Email ?? string.Empty,
@@ -98,12 +100,12 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                     Country = c.Country ?? string.Empty,
                     Segmento = DeterminarSegmento(c.City, c.Country),
                     FechaCarga = fechaCarga,
-                    IdFuente = fuenteCsvClientesKey  
+                    IdFuente = fuenteCsvClientesKey
                 }));
 
                 dimClientes.AddRange(apiClientes.Select(c => new DimCliente
                 {
-                    CustomerID = c.CustomerID,  
+                    CustomerID = c.CustomerID,
                     FirstName = c.FirstName ?? string.Empty,
                     LastName = c.LastName ?? string.Empty,
                     Email = c.Email ?? string.Empty,
@@ -112,21 +114,20 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                     Country = c.Country ?? string.Empty,
                     Segmento = DeterminarSegmento(c.City, c.Country),
                     FechaCarga = fechaCarga,
-                    IdFuente = fuenteApiClientesKey  
+                    IdFuente = fuenteApiClientesKey
                 }));
 
                 var clientesIdsExistentes = dimClientes
                     .Select(c => c.CustomerID)
                     .ToHashSet();
 
-               
                 var clientesExternos = ventasExternas
                     .Select(v => v.CustomerID)
                     .Distinct()
                     .Where(id => !clientesIdsExistentes.Contains(id))
                     .Select(id => new DimCliente
                     {
-                        CustomerID = id,  
+                        CustomerID = id,
                         FirstName = $"Cliente-{id}",
                         LastName = "Histórico",
                         Email = $"cliente{id}@historico.com",
@@ -135,7 +136,7 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                         Country = "Desconocido",
                         Segmento = "No Clasificado",
                         FechaCarga = fechaCarga,
-                        IdFuente = fuenteExternosKey  
+                        IdFuente = fuenteExternosKey
                     })
                     .ToArray();
 
@@ -144,7 +145,6 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                 await _ctx.DimClientes.AddRangeAsync(dimClientes);
                 await _ctx.SaveChangesAsync();
 
-              
                 var dimProductos = new List<DimProducto>();
 
                 dimProductos.AddRange(csvProductos.Select(p => new DimProducto
@@ -156,7 +156,7 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                     Stock = p.Stock,
                     Marca = DeterminarMarca(p.ProductName),
                     FechaCarga = fechaCarga,
-                    IdFuente = fuenteCsvProductosKey  
+                    IdFuente = fuenteCsvProductosKey
                 }));
 
                 dimProductos.AddRange(apiProductos.Select(p => new DimProducto
@@ -168,7 +168,7 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                     Stock = p.Stock,
                     Marca = DeterminarMarca(p.ProductName),
                     FechaCarga = fechaCarga,
-                    IdFuente = fuenteApiProductosKey  
+                    IdFuente = fuenteApiProductosKey
                 }));
 
                 var productosIdsExistentes = dimProductos.Select(p => p.ProductID).ToHashSet();
@@ -185,7 +185,7 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                         Stock = 0,
                         Marca = "Desconocida",
                         FechaCarga = fechaCarga,
-                        IdFuente = fuenteExternosKey  
+                        IdFuente = fuenteExternosKey
                     });
 
                 dimProductos.AddRange(productosExternos);
@@ -193,12 +193,14 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
                 await _ctx.DimProductos.AddRangeAsync(dimProductos);
                 await _ctx.SaveChangesAsync();
 
-                // -----------------------
-                // Cargar DimTiempo
-                // -----------------------
-                var datafecha = ventasExternas
-                    .Select(fe => fe.OrderDate.Date)
-                    .Distinct()
+                // ✅ CORREGIDO: Incluir fechas de Orders CSV también
+                var csvOrders = await _csvOrders.ReadFileAsync("");
+
+                var fechasExternas = ventasExternas.Select(fe => fe.OrderDate.Date).Distinct();
+                var fechasCsv = csvOrders.Select(o => o.OrderDate.Date).Distinct();
+                var todasFechas = fechasExternas.Union(fechasCsv).Distinct();
+
+                var datafecha = todasFechas
                     .Select(fe => new DimTiempo
                     {
                         Fecha = fe,
@@ -237,10 +239,7 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
 
             try
             {
-                // 1. Borrar tabla de hechos primero
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Fact.FactVentas");
-
-                // 2. Borrar dimensiones (orden recomendado para evitar FK conflicts)
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Dimension.DimTiempo");
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Dimension.DimCliente");
                 await _ctx.Database.ExecuteSqlRawAsync("DELETE FROM Dimension.DimProducto");
@@ -346,65 +345,185 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse
             return feriados.Any(f => f.mes == fecha.Month && f.dia == fecha.Day);
         }
 
+        // ✅✅✅ MÉTODO CORREGIDO PARA PROCESAR TODAS LAS FUENTES ✅✅✅
         public async Task<Result> LoadFactsDataAsync()
         {
             var result = new Result();
 
             try
             {
-                var ventasExternas = await _externalDb.GetVentasHistoricasAsync();
+                _logger.LogInformation("=== Iniciando carga de FactVentas ===");
 
+                // ========== PASO 1: EXTRAER DATOS ==========
+
+                // BD Externa
+                var ventasExternas = await _externalDb.GetVentasHistoricasAsync();
+                _logger.LogInformation($"✓ BD Externa: {ventasExternas.Count()} registros");
+
+                // CSVs - Orders y OrderDetails
+                var csvOrders = await _csvOrders.ReadFileAsync("");
+                var csvOrderDetails = await _csvOrderDetails.ReadFileAsync("");
+                _logger.LogInformation($"✓ CSV Orders: {csvOrders.Count()} registros");
+                _logger.LogInformation($"✓ CSV OrderDetails: {csvOrderDetails.Count()} registros");
+
+                // ========== PASO 2: CARGAR DIMENSIONES ==========
                 var clientesDW = await _ctx.DimClientes.AsNoTracking().ToListAsync();
                 var productosDW = await _ctx.DimProductos.AsNoTracking().ToListAsync();
                 var tiemposDW = await _ctx.DimTiempos.AsNoTracking().ToListAsync();
-                var fuenteDW = await _ctx.DimFuentes.FirstOrDefaultAsync(f => f.IdFuente == 5); // Fuente BD Externa (business id 5)
+                var fuentesDW = await _ctx.DimFuentes.AsNoTracking().ToListAsync();
 
+                _logger.LogInformation($"✓ Dimensiones cargadas: {clientesDW.Count} clientes, {productosDW.Count} productos, {tiemposDW.Count} tiempos");
+
+                // Obtener FuenteKeys
+                var fuenteCsvKey = fuentesDW.FirstOrDefault(f => f.IdFuente == 1)?.FuenteKey ?? 0;
+                var fuenteExternaKey = fuentesDW.FirstOrDefault(f => f.IdFuente == 5)?.FuenteKey ?? 0;
+
+                if (fuenteCsvKey == 0 || fuenteExternaKey == 0)
+                {
+                    throw new Exception("No se encontraron las fuentes de datos necesarias");
+                }
+
+                // ========== PASO 3: LIMPIAR TABLA DE HECHOS ==========
                 await _ctx.FactVentas.ExecuteDeleteAsync();
+                _logger.LogInformation("✓ Tabla FactVentas limpiada");
 
                 var factVentas = new List<FactVentas>();
+                int procesadosBD = 0, erroresBD = 0;
+                int procesadosCSV = 0, erroresCSV = 0;
+
+                // ========== PASO 4: PROCESAR BD EXTERNA ==========
+                _logger.LogInformation("--- Procesando BD Externa ---");
 
                 foreach (var venta in ventasExternas)
                 {
-                    
                     var cliente = clientesDW.FirstOrDefault(c => c.CustomerID == venta.CustomerID);
                     var producto = productosDW.FirstOrDefault(p => p.ProductID == venta.ProductID);
                     var tiempo = tiemposDW.FirstOrDefault(t => t.Fecha.Date == venta.OrderDate.Date);
 
-                    if (cliente != null && producto != null && tiempo != null && fuenteDW != null)
+                    if (cliente != null && producto != null && tiempo != null)
                     {
-                        var fact = new FactVentas
+                        factVentas.Add(new FactVentas
                         {
                             TiempoKey = tiempo.TiempoKey,
                             ProductKey = producto.ProductKey,
                             CustomerKey = cliente.CustomerKey,
-                            FuenteKey = fuenteDW.FuenteKey, 
+                            FuenteKey = fuenteExternaKey,
                             cantidad = venta.Quantity,
                             precio_unitario = venta.UnitPrice,
                             total_venta = venta.TotalPrice,
                             fecha_carga = DateTime.Now,
                             OrderID = venta.OrderID.ToString(),
                             Status = venta.Status
-                        };
-                        factVentas.Add(fact);
+                        });
+                        procesadosBD++;
+                    }
+                    else
+                    {
+                        erroresBD++;
                     }
                 }
 
-                await _ctx.FactVentas.AddRangeAsync(factVentas);
-                await _ctx.SaveChangesAsync();
+                _logger.LogInformation($"✓ BD Externa - Procesados: {procesadosBD}, Errores: {erroresBD}");
+
+                // ========== PASO 5: PROCESAR CSVs (JOIN Orders + OrderDetails) ==========
+                _logger.LogInformation("--- Procesando CSV (JOIN Orders + OrderDetails) ---");
+
+                // JOIN entre Orders y OrderDetails
+                var ventasCsv = from order in csvOrders
+                                join detail in csvOrderDetails on order.OrderID equals detail.OrderID
+                                select new
+                                {
+                                    OrderID = order.OrderID,
+                                    CustomerID = order.CustomerID, // STRING
+                                    OrderDate = order.OrderDate,
+                                    ProductID = detail.ProductID,
+                                    Quantity = detail.Quantity,
+                                    TotalPrice = detail.TotalPrice,
+                                    Status = order.Status ?? "Completed"
+                                };
+
+                _logger.LogInformation($"✓ JOIN completado: {ventasCsv.Count()} registros combinados");
+
+                foreach (var venta in ventasCsv)
+                {
+                    // Convertir CustomerID de string a int
+                    if (!int.TryParse(venta.CustomerID, out int customerId))
+                    {
+                        erroresCSV++;
+                        if (erroresCSV <= 5) // Log solo primeros 5
+                            _logger.LogWarning($"CustomerID inválido: '{venta.CustomerID}' en OrderID: {venta.OrderID}");
+                        continue;
+                    }
+
+                    var cliente = clientesDW.FirstOrDefault(c => c.CustomerID == customerId);
+                    var producto = productosDW.FirstOrDefault(p => p.ProductID == venta.ProductID);
+                    var tiempo = tiemposDW.FirstOrDefault(t => t.Fecha.Date == venta.OrderDate.Date);
+
+                    if (cliente != null && producto != null && tiempo != null)
+                    {
+                        // Calcular precio unitario
+                        var precioUnitario = venta.Quantity > 0
+                            ? venta.TotalPrice / venta.Quantity
+                            : 0;
+
+                        factVentas.Add(new FactVentas
+                        {
+                            TiempoKey = tiempo.TiempoKey,
+                            ProductKey = producto.ProductKey,
+                            CustomerKey = cliente.CustomerKey,
+                            FuenteKey = fuenteCsvKey,
+                            cantidad = venta.Quantity,
+                            precio_unitario = precioUnitario,
+                            total_venta = venta.TotalPrice,
+                            fecha_carga = DateTime.Now,
+                            OrderID = venta.OrderID.ToString(),
+                            Status = venta.Status
+                        });
+                        procesadosCSV++;
+                    }
+                    else
+                    {
+                        erroresCSV++;
+                        if (erroresCSV <= 5) // Log solo primeros 5
+                        {
+                            _logger.LogWarning($"No se encontraron dimensiones - OrderID: {venta.OrderID}, " +
+                                             $"CustomerID: {customerId}, ProductID: {venta.ProductID}, " +
+                                             $"Fecha: {venta.OrderDate:yyyy-MM-dd}, " +
+                                             $"Cliente: {cliente != null}, Producto: {producto != null}, Tiempo: {tiempo != null}");
+                        }
+                    }
+                }
+
+                _logger.LogInformation($"✓ CSV - Procesados: {procesadosCSV}, Errores: {erroresCSV}");
+
+                // ========== PASO 6: GUARDAR EN LOTES ==========
+                _logger.LogInformation($"--- Guardando {factVentas.Count} registros en lotes ---");
+
+                int batchSize = 5000;
+                int totalGuardados = 0;
+
+                for (int i = 0; i < factVentas.Count; i += batchSize)
+                {
+                    var batch = factVentas.Skip(i).Take(batchSize).ToList();
+                    await _ctx.FactVentas.AddRangeAsync(batch);
+                    await _ctx.SaveChangesAsync();
+                    totalGuardados += batch.Count;
+                    _logger.LogInformation($"✓ Lote {(i / batchSize) + 1}: {batch.Count} registros guardados (Total: {totalGuardados})");
+                }
 
                 result.IsSuccess = true;
-                result.Message = $"Se cargaron {factVentas.Count} registros en FactVentas.";
-                _logger.LogInformation(result.Message);
+                result.Message = $"Se cargaron {factVentas.Count} registros en FactVentas " +
+                                $"(BD Externa: {procesadosBD}, CSV: {procesadosCSV})";
+                _logger.LogInformation($"=== COMPLETADO: {result.Message} ===");
             }
             catch (Exception ex)
             {
                 result.IsSuccess = false;
                 result.Message = $"Error cargando hechos: {ex.Message}";
-                _logger.LogError(ex, "Error en LoadFactsDataAsync");
+                _logger.LogError(ex, "Error en LoadFactsDataAsync: {Message}", ex.Message);
             }
 
             return result;
         }
-
     }
 }

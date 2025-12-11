@@ -16,7 +16,7 @@ namespace SAV.workerLoad
         {
             var builder = Host.CreateApplicationBuilder(args);
 
-            // Configurar logging
+            
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
             builder.Logging.AddDebug();
@@ -65,8 +65,6 @@ namespace SAV.workerLoad
             // HttpClient genérico para otros usos
             builder.Services.AddHttpClient();
 
-            // ========== REGISTRO DE REPOSITORIOS ==========
-
             // Repositorios CSV
             builder.Services.AddScoped<IcustomersCsvRepo, CustomersReaderRepository>();
             builder.Services.AddScoped<IproductsCsvRepo, ProductsReaderRepository>();
@@ -88,7 +86,6 @@ namespace SAV.workerLoad
 
             builder.Services.AddHostedService<Worker>();
 
-            // Configurar ciclo de vida de los servicios
             builder.Services.Configure<HostOptions>(options =>
             {
                 options.ServicesStartConcurrently = false;
@@ -98,7 +95,7 @@ namespace SAV.workerLoad
 
             var host = builder.Build();
 
-            // Crear tablas si no existen (solo en desarrollo)
+            
             if (builder.Environment.IsDevelopment())
             {
                 using var scope = host.Services.CreateScope();

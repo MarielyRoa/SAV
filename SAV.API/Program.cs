@@ -1,6 +1,4 @@
-using SAV.api.Data.Context;
 using SAV.application.Repository;
-using Microsoft.EntityFrameworkCore; 
 using SAV.persistencia.Repositorios.Api;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,19 +14,6 @@ builder.Services.AddSwaggerGen(options =>
         Title = "SAV API - Sistema de Ventas",
         Version = "v1",
         Description = "API para consultar clientes y productos actualizados"
-    });
-});
-
-
-builder.Services.AddDbContext<ApiContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("ApiConnection")
-        ?? "Server=DESKTOP-B3FNPSK\\SQLEXPRESS;Database=ApiDB;Trusted_Connection=True;TrustServerCertificate=True;";
-
-    options.UseSqlServer(connectionString, sqlOptions =>
-    {
-        sqlOptions.CommandTimeout(60);
-        sqlOptions.EnableRetryOnFailure(3);
     });
 });
 
@@ -57,7 +42,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
+// Logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
@@ -65,6 +50,7 @@ builder.Logging.SetMinimumLevel(LogLevel.Information);
 
 var app = builder.Build();
 
+// Swagger siempre habilitado
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
@@ -73,20 +59,18 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseCors("AllowAll");
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Lifetime.ApplicationStarted.Register(() =>
 {
     var logger = app.Services.GetRequiredService<ILogger<Program>>();
     logger.LogInformation("========================================");
-    logger.LogInformation("?? SAV API iniciada exitosamente");
-    logger.LogInformation("?? Swagger UI: http://localhost:3000/");
-    logger.LogInformation("?? Endpoints disponibles:");
-    logger.LogInformation("   GET /api/ClientesApi/GetClientes");
-    logger.LogInformation("   GET /api/ProductosApi/GetProductos");
+    logger.LogInformation("SAV API iniciada exitosamente");
+    logger.LogInformation("Swagger UI: http://localhost:3000/");
+    logger.LogInformation("Endpoints disponibles:");
+    logger.LogInformation("GET /api/ClientesApi/GetClientes");
+    logger.LogInformation("GET /api/ProductosApi/GetProductos");
     logger.LogInformation("========================================");
 });
 

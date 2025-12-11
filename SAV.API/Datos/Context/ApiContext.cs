@@ -16,7 +16,6 @@ namespace SAV.api.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // Puedes agregar claves primarias si quieres
             modelBuilder.Entity<ClientesUpdate>().HasKey(c => c.CustomerID);
             modelBuilder.Entity<ProductosUpdate>().HasKey(p => p.ProductID);
         }

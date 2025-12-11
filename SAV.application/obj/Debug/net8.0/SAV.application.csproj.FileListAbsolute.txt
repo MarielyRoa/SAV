@@ -8,6 +8,7 @@ C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.Ge
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.AssemblyInfoInputs.cache
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.AssemblyInfo.cs
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.csproj.CoreCompileInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.sourcelink.json
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.appl.0E8F44A9.Up2Date
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\SAV.application.dll
 C:\Users\Mariely\Desktop\SAV\SAV.application\obj\Debug\net8.0\refint\SAV.application.dll

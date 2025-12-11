@@ -92,6 +92,7 @@ C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.Gene
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.AssemblyInfoInputs.cache
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.AssemblyInfo.cs
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.csproj.CoreCompileInputs.cache
+C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.sourcelink.json
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.work.0B68C664.Up2Date
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\SAV.workerLoad.dll
 C:\Users\Mariely\Desktop\SAV\SAV.workerLoad\obj\Debug\net8.0\refint\SAV.workerLoad.dll

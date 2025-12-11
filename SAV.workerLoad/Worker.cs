@@ -30,16 +30,16 @@ namespace SAV.workerLoad
         {
             _logger.LogInformation("Worker ETL iniciado. Esperando 10 segundos para inicializacion...");
 
-            // Esperar para que todos los servicios esten listos
+           
             await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
 
-            // Ejecutar inmediatamente si esta configurado
+            
             if (_configuration.GetValue<bool>("WorkerSettings:RunAtStartup", true))
             {
                 await RunETLProcessAsync();
             }
 
-            // Configurar intervalo
+           
             var intervalMinutes = _configuration.GetValue<int>("WorkerSettings:IntervalMinutes", 60);
 
             _logger.LogInformation($"Worker configurado para ejecutar cada {intervalMinutes} minutos.");
@@ -55,7 +55,7 @@ namespace SAV.workerLoad
                     _logger.LogError(ex, "Error en la ejecucion del ETL");
                 }
 
-                // Esperar el intervalo configurado
+               
                 _logger.LogInformation($"Esperando {intervalMinutes} minutos para proxima ejecucion...");
                 await Task.Delay(TimeSpan.FromMinutes(intervalMinutes), stoppingToken);
             }
@@ -65,7 +65,7 @@ namespace SAV.workerLoad
 
         private async Task RunETLProcessAsync()
         {
-            // Evitar ejecuciones simultaneas
+            
             if (!await _semaphore.WaitAsync(0))
             {
                 _logger.LogWarning("ETL ya en ejecucion. Saltando esta iteracion.");

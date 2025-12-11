@@ -20,14 +20,14 @@ namespace SAV.persistencia.Repositorios.Data_Warehouse.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configurar que todas las cadenas sean nvarchar (Unicode)
+            
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 foreach (var property in entityType.GetProperties())
                 {
                     if (property.ClrType == typeof(string))
                     {
-                        property.SetIsUnicode(true); // Esto hace que sea nvarchar
+                        property.SetIsUnicode(true); 
                     }
                 }
             }
